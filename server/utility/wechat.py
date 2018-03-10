@@ -49,17 +49,14 @@ def get_access_token():
     #set lat get access_token time
     last_get_access_token_time = datetime.datetime.now()
 
-    # refresh menu
-    create_menu()
-
     return access_token
 
 def get_openID(request):
     """
     Get user OpenID from url or session.
-	"""
+    """
 
-	OpenID = request.GET("openid", None)
+    OpenID = request.GET("openid", None)
 
-	if not OpenID:
-		request.session.get("openid",default=None)
+    if not OpenID:
+        request.session.get("openid",default=None)

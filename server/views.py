@@ -15,6 +15,14 @@ from .utility.message.message_generator import *
 ########################################################################################
 ########################################  Entrance #####################################
 ########################################################################################
+def create_menu():
+    """
+    Create WeChat menu by json file.
+    """
+
+    url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=%s" % get_access_token()
+    jbody = load_menu_json()
+    send_post_request(url, textmod=jbody)
 
 @csrf_exempt
 def wechat_home(request):
@@ -32,6 +40,8 @@ def wechat_home(request):
         # checked
         else:
             response = echostr
+            # refresh menu
+            create_menu()
             return HttpResponse(response)
     elif request.method == 'POST':
         # POST method stands for Wechat sent user's messages

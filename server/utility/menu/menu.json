@@ -23,7 +23,7 @@
             {
                "type":"click",
                "name":"button",
-               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx841a97238d9e17b2&redirect_uri=http://www.baidu.com&response_type=code&scope=snsapi_base"
+               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx841a97238d9e17b2&redirect_uri=http://www.hulixueyuan.com/&response_type=code&scope=snsapi_base"
             }]
        }]
  }
