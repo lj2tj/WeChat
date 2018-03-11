@@ -6,4 +6,5 @@ app_name = 'server'
 
 urlpatterns = [
     path('', views.wechat_home, name='default'),
+    path(r'index/', views.index, name='index'),
 ]

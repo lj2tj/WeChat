@@ -9,6 +9,5 @@ def get_json_value(strJson, key):
     @key must by a property of json.
     """
     j = json.loads(strJson)
-    if j["errcode"] != 0:
-        return None
-    return j[key]
+    k = j.get(key, None)
+    return k

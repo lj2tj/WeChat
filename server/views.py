@@ -10,6 +10,7 @@ from .utility.utilities import *
 from .utility.httphelper import *
 from .utility.message.message import *
 from .utility.message.message_generator import *
+from .constant import *
 
 
 ########################################################################################
@@ -20,7 +21,7 @@ def create_menu():
     Create WeChat menu by json file.
     """
 
-    url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=%s" % get_access_token()
+    url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=%s" % get_acceIss_token()
     jbody = load_menu_json()
     send_post_request(url, textmod=jbody)
 
@@ -91,3 +92,22 @@ def wechat_home(request):
         return HttpResponse(content)
     else:
         return HttpResponse("Unknown request type")
+
+def index(request):
+    key = "code"
+    if request.method == "GET":
+        state = request.GET.get('state', None)
+        code = request.GET.get(key, None)
+        if not code:
+            code = request.session.get(key,default=None)
+        if not code:
+            return render(request, "index.html")
+        url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code" % \
+            (AppID, AppSecret, code)
+        access_token_body = send_get_request(url)
+        #set access_token
+        access_token = get_json_value(access_token_body, "access_token")
+        openid = get_json_value(access_token_body, "openid")
+        return render(request, "index.html", context={"access_token":access_token, "openid":openid})
+    else:
+        return render(request, "index.html")

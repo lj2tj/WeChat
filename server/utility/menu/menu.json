@@ -1,29 +1,12 @@
  {
      "button":[
-     {    
-          "type":"click",
-          "name":"今日歌曲",
-          "key":"V1001_TODAY_MUSIC"
-      },
       {
-           "name":"菜单",
+           "name":"我的",
            "sub_button":[
            {    
                "type":"view",
-               "name":"搜索",
-               "url":"http://www.soso.com/"
-            },
-            {
-                 "type":"miniprogram",
-                 "name":"wxa",
-                 "url":"http://mp.weixin.qq.com",
-                 "appid":"wx286b93c14bbf93aa",
-                 "pagepath":"pages/lunar/index"
-             },
-            {
-               "type":"click",
-               "name":"button",
-               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx841a97238d9e17b2&redirect_uri=http://www.hulixueyuan.com/&response_type=code&scope=snsapi_base"
+               "name":"个人中心",
+               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=AppID&redirect_uri=URL&response_type=code&scope=snsapi_userinfo&state=1234#wechat_redirect"
             }]
        }]
  }
